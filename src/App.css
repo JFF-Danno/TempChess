@@ -1,0 +1,219 @@
+
+.socialmediaicon{
+    height: 50px;
+}
+
+
+#abookimg
+{
+    height: 30px;
+}
+#loading
+{
+    display: none;
+    width: 300px;
+}
+
+#loading img
+{
+   width: 300px;
+}
+.stakebox
+{
+    width:500px;
+}
+.staked
+{
+    background-color: #444444;
+}
+
+
+.avatarimage
+{
+    border-radius: 25%;
+    height: 50px;
+}
+
+.listImage
+{
+    border-radius: 5%;
+    height: 300px;
+}
+
+li
+{
+    list-style: none;
+}
+
+#paragraph, #header, #tandc, #airdrop_
+{
+    display:none;
+}
+
+#about-paragraph
+{
+    width: 100%;
+}
+
+.commonsitem
+{
+    padding:8px;
+}
+
+
+.item
+{
+    
+   
+    width: 100%;
+text-align: left;
+
+    padding:8px;
+    text-align: left;
+
+display: inline-block;
+
+}
+
+.itemImage
+{
+    max-height: 250px;
+    max-width: 95%;
+    vertical-align: middle;
+    text-align: left;
+    float: left;
+    padding-right: 48px;
+
+}
+
+#previewImage
+{
+    max-height: 800px;
+    max-width: 95%;
+}
+
+#loading
+{
+    display: none;
+    width: 300px;
+}
+
+#loading img
+{
+   width: 300px;
+}
+
+.creator
+{
+    font-size: 10px;
+}
+
+.username
+{
+    font-size: 20px;
+}
+
+.nftview
+{
+    max-width: 400px;
+}
+
+.deployButton
+{
+    padding-left: 264px;
+}
+
+.label
+{
+    font-size: 10px;
+    color: #333;
+}
+
+#warningAddress,#warningAmount
+{
+    font-size: 18px;
+    color: #ff0000;
+    display: none;
+}
+
+
+.txlist td
+{
+    padding: 8px;
+}
+
+.mmPanel
+{
+    float:right;
+}
+
+.txlist a
+{
+    color: darkslategray;
+}
+
+#abook
+{
+    border: 1px dotted;
+   
+}
+
+#abookimg
+{
+    height: 30px;
+}
+
+.addressitem
+{
+    padding: 8px;
+}
+
+.imageItem
+{
+
+ white-space: nowrap;
+}
+.helper {
+    display: inline-block;
+
+    vertical-align: middle;
+}
+
+html, body {
+  height: 100%;
+    background-color: #f2f2f2;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.socialmediaicon{
+    height: 50px;
+}
+
+.tagButtons{
+    padding: 8px;
+}
+
+.tooltip
+{
+    width: 100%;
+}
+
+.imageBox
+{
+    width: 360px;
+}
+
+.imageItem h2, .imageItem h3,.imageItem h5
+{
+    margin-left: 380px;
+}
+
+a
+{
+    color: #222;
+    text-decoraton:none;
+    text-decoraton-thickness:0;
+}
