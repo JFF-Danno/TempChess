@@ -116,21 +116,7 @@ const Tag = moralis.Object.extend( "Tag", { /* Instance methods*/ },
                                     }
 
 
-    async function getGammaAddress()
-    {
-        var commonsId =    window.location.search.substring( 11 );
-        const query = new moralis.Query( Commons );
-        const commonsAddy = getCommonsAddress();
-        query.equalTo( "contractAddress", commonsAddy );
-        const results = await query.find();
-        var address = ''; 
-         if ( results.length > 0 )
-         {
-             let image = results[0];
-             address = image.get( "gammaAddress" );
-         }
-        return address;
-    }
+
 
 
 
@@ -202,8 +188,8 @@ const Tag = moralis.Object.extend( "Tag", { /* Instance methods*/ },
     console.log('MolVault contract is - ', commonsContractAddress)
     const _contract = new ethers.Contract(commonsContractAddress, MOLCOMMONS_ABI, signer)
     try{
-      const gammaAddress = await getGammaAddress();
-      const gamma_contract = new ethers.Contract(gammaAddress, GAMMA_ABI, signer)
+      var gamma = await _contract.gamma();
+      const gamma_contract = new ethers.Contract(gamma, GAMMA_ABI, signer)
       const supply = await gamma_contract.totalSupply();
       const tx = await _contract.mint( price, tokenURI, sale ? 1 :0, await signer.getAddress(), splitAmount, collaboratorAddresses, collaboratorSplits  )                                                    
 
@@ -212,7 +198,7 @@ const Tag = moralis.Object.extend( "Tag", { /* Instance methods*/ },
  
      tx.wait().then((receipt) => { 
          console.log('mint receipt is - ', receipt)
-         const newNFT = NFT.newNFT( dict, fileHash, commonsContractAddress, gammaAddress, supply, tx.hash, filename, extension );
+         const newNFT = NFT.newNFT( dict, fileHash, commonsContractAddress, gamma, supply, tx.hash, filename, extension );
          newNFT.save();
        }).then(() =>{ 
           document.getElementById( 'loading' ).style.display = 'none';
@@ -227,7 +213,7 @@ const Tag = moralis.Object.extend( "Tag", { /* Instance methods*/ },
 
     function getCommonsAddress()
     {
-        const address = '0x0BEa25c01D5eA3eDBc7BD67C1270f6141F1521A7';
+        const  address = process.env.REACT_APP_COMMONS_CONTRACT
         return address;
     }
 

@@ -127,8 +127,8 @@ function App() {
                 setCreatedAt( new Date( created ).toString() );
                 setImage( image.get( "metadata" ).image );
                 setTitle( image.get( "title" ) );
-                let ga =  image.get( "gammaAddress" );
-                setGammaAddress( ga );
+               // let ga =  image.get( "gammaAddress" );
+               /// setGammaAddress( ga );
                 setUnlockLink( image.get( "unLockLink" ) );
                 setDescription( image.get( "description" ) );
                 setTokenIndex( image.get( "tokenIndex" ) );
@@ -235,34 +235,18 @@ function App() {
             }
         }
 
-    async function getCommonsAddress()
+    function getCommonsAddress()
     {
-        var imageHash =    window.location.search.substring( 6 );
-        const query = new moralis.Query( NFT );
-        query.equalTo( "fileHash", imageHash );
-        const results = await query.find();
-        var address = ''; 
-         if ( results.length > 0 )
-         {
-             let image = results[0];
-            address = image.get( "commonsAddress" );
-         }
+        const  address = process.env.REACT_APP_COMMONS_CONTRACT
         return address;
     }
 
-    async function getGammaAddress()
+    const  getGammaAddress = async () => 
     {
-        var imageHash =    window.location.search.substring( 6 );
-        const query = new moralis.Query( NFT );
-        query.equalTo( "fileHash", imageHash );
-        const results = await query.find();
-        var address = ''; 
-         if ( results.length > 0 )
-         {
-             let image = results[0];
-            address = image.get( "gammaAddress" );
-         }
-        return address;
+        const _contract = new ethers.Contract(getCommonsAddress(), MOLCOMMONS_ABI, signer)
+        var gamma = await _contract.gamma();
+        setGammaAddress( gamma );
+        return gamma;
     }
 
 const getCreatorFee = async () => {
@@ -442,7 +426,7 @@ const ethEnabled = () => {
 
  useEffect( async () => {
 
-    
+    await getGammaAddress()
     await getImageData()
     if ( gammaAddress )
     {
